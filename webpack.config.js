@@ -6,21 +6,21 @@ module.exports = {
   mode: 'development',
   devServer: {
     static: {
-      directory: path.join(__dirname, 'public')
+      directory: path.join(__dirname, 'public'),
     },
-    port: 8082
+    port: 8082,
   },
   plugins: [
     new ModuleFederationPlugin({
       name: 'cart',
       filename: 'remoteEntry.js',
       exposes: {
-        './CartIndex': './src/index.js'
-      }
-    })
-    ,
+        './CartIndex': './src/index.js',
+      },
+      shared: ['faker'],
+    }),
     new HtmlWebpackPlugin({
-      template: './public/index.html'
-    })
-  ]
-}
+      template: './public/index.html',
+    }),
+  ],
+};
